@@ -4,7 +4,6 @@ package org.stupidstick.cli;
 import com.beust.jcommander.Parameter;
 import lombok.Data;
 import lombok.Getter;
-
 import java.util.List;
 
 @Getter

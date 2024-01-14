@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        args = new String[] {"-f", "input/input.txt"};
+        args = new String[] {"-f", "-o", "results", "input/input.txt"};
         try {
             FilterRunnerByArgs runner = new FilterRunnerByArgs(args);
             runner.run();

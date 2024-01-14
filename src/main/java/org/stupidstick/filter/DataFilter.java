@@ -23,6 +23,7 @@ public class DataFilter {
 
 
     private DataFilter(String outputPrefix, String writingPath, FileWritingMode writingMode, StatisticMode statisticMode) {
+        FilterUtils.createDirectories(writingPath);
         OutputConfiguration.getOutputFilenames()
                 .forEach((type, fileName) -> writers.put(type,
                         new FileDataWriter(FilterUtils.buildPath(writingPath, outputPrefix + fileName), writingMode)));
