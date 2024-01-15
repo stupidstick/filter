@@ -1,12 +1,11 @@
 package org.stupidstick.cli;
 
 import com.beust.jcommander.JCommander;
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.stupidstick.filter.DataFilter;
-import org.stupidstick.filter.FileWritingMode;
-import org.stupidstick.statistic.StatisticMode;
-import org.stupidstick.statistic.collectors.DataStatisticCollector;
+import org.stupidstick.filter.WritingMode;
+import org.stupidstick.statistics.StatisticMode;
+import org.stupidstick.statistics.collectors.DataStatisticCollector;
 
 @Slf4j
 public class FilterRunnerByArgs {
@@ -47,8 +46,8 @@ public class FilterRunnerByArgs {
         return args.isShortStatisticMode() ? StatisticMode.SHORT : StatisticMode.FULL;
     }
 
-    private FileWritingMode parseWritingMode() {
-        return args.isAppendWritingMode() ? FileWritingMode.APPEND : FileWritingMode.REWRITE;
+    private WritingMode parseWritingMode() {
+        return args.isAppendWritingMode() ? WritingMode.APPEND : WritingMode.REWRITE;
     }
 
     private void parseArgs(String[] args) {

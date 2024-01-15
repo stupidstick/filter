@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Getter
-public enum FileWritingMode {
+public enum WritingMode {
     APPEND(true),
     REWRITE(false);
 

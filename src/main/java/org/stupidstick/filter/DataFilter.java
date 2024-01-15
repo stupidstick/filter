@@ -4,13 +4,11 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.stupidstick.DataConverter;
-import org.stupidstick.DataType;
-import org.stupidstick.Pair;
-import org.stupidstick.configuration.OutputConfiguration;
-import org.stupidstick.statistic.StatisticMode;
-import org.stupidstick.statistic.collectors.DataStatisticCollector;
-import org.stupidstick.writer.DataWriter;
+import org.stupidstick.data.DataConverter;
+import org.stupidstick.data.DataType;
+import org.stupidstick.data.Pair;
+import org.stupidstick.statistics.StatisticMode;
+import org.stupidstick.statistics.collectors.DataStatisticCollector;
 import org.stupidstick.writer.DataWritersManager;
 
 import java.io.BufferedReader;
@@ -26,11 +24,11 @@ public class DataFilter {
     @Getter @Setter
     private String writingPath;
     @Getter @Setter
-    private FileWritingMode writingMode;
+    private WritingMode writingMode;
     private DataWritersManager writersManager;
 
 
-    private DataFilter(String outputPrefix, String writingPath, FileWritingMode writingMode, StatisticMode statisticMode) {
+    private DataFilter(String outputPrefix, String writingPath, WritingMode writingMode, StatisticMode statisticMode) {
         this.outputPrefix = outputPrefix;
         this.writingPath = writingPath;
         this.writingMode = writingMode;
@@ -52,7 +50,7 @@ public class DataFilter {
             String data;
             while ((data = reader.readLine()) != null) {
                 Pair<DataType, Object> convertedData = DataConverter.convert(data);
-                writers.get(convertedData.key()).writeLine(data);
+                writersManager.writeData(convertedData.key(), data);
                 statisticCollector.add(convertedData);
             }
         } catch (IOException exception) {
@@ -64,7 +62,7 @@ public class DataFilter {
     public static class DataFilterBuilder {
         private String outputPrefix = "";
         private String writingPath = "";
-        private FileWritingMode writingMode = FileWritingMode.REWRITE;
+        private WritingMode writingMode = WritingMode.REWRITE;
         private StatisticMode statisticMode;
 
 
@@ -83,7 +81,7 @@ public class DataFilter {
             return this;
         }
 
-        public DataFilterBuilder writingMode(@NonNull FileWritingMode mode) {
+        public DataFilterBuilder writingMode(@NonNull WritingMode mode) {
             this.writingMode = mode;
             return this;
         }

@@ -1,4 +1,4 @@
-package org.stupidstick.statistic.collectors;
+package org.stupidstick.statistics.collectors;
 
 import lombok.Getter;
 

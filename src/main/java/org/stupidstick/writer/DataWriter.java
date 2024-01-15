@@ -2,7 +2,7 @@ package org.stupidstick.writer;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.stupidstick.filter.FileWritingMode;
+import org.stupidstick.filter.WritingMode;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -13,7 +13,7 @@ public class DataWriter {
     @Getter
     private final String filePath;
     @Getter
-    private final FileWritingMode writingMode;
+    private final WritingMode writingMode;
     private BufferedWriter writer;
 
     public void writeLine(String line) throws IOException {

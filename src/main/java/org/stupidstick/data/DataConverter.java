@@ -1,4 +1,4 @@
-package org.stupidstick;
+package org.stupidstick.data;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

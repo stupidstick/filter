@@ -1,9 +1,9 @@
-package org.stupidstick.statistic.collectors;
+package org.stupidstick.statistics.collectors;
 
 import lombok.*;
-import org.stupidstick.DataType;
-import org.stupidstick.Pair;
-import org.stupidstick.statistic.StatisticMode;
+import org.stupidstick.data.DataType;
+import org.stupidstick.data.Pair;
+import org.stupidstick.statistics.StatisticMode;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

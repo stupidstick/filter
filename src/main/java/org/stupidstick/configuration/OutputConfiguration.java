@@ -1,7 +1,7 @@
 package org.stupidstick.configuration;
 
 import lombok.Getter;
-import org.stupidstick.DataType;
+import org.stupidstick.data.DataType;
 import org.stupidstick.exceptions.ConfigurationInitializationException;
 
 import java.util.EnumMap;

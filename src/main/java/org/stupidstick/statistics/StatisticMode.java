@@ -1,4 +1,4 @@
-package org.stupidstick.statistic;
+package org.stupidstick.statistics;
 
 public enum StatisticMode {
     FULL, SHORT

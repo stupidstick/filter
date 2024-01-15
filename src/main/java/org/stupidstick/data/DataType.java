@@ -1,4 +1,4 @@
-package org.stupidstick;
+package org.stupidstick.data;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
