@@ -12,7 +12,7 @@ public class StatisticCollector<T> {
     }
 
     public String statistic() {
-        return "Elements count: " + elementsCount + "; ";
+        return "Elements count: " + elementsCount + "\n";
     }
 
 }

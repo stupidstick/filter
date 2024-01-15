@@ -24,8 +24,8 @@ public class DecimalFullStatisticCollector extends NumberFullStatisticCollector<
     @Override
     public String statistic() {
         StringBuilder builder = new StringBuilder(super.statistic());
-        builder.append("Sum: ").append(sumVal).append("; ");
-        if (getAvg() != null) builder.append("Avg: ").append(getAvg().stripTrailingZeros()).append("; ");
+        builder.append("Sum: ").append(sumVal).append("\n");
+        if (getAvg() != null) builder.append("Avg: ").append(getAvg().stripTrailingZeros()).append("\n");
         return builder.toString();
     }
 }

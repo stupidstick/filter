@@ -1,10 +1,14 @@
 package org.stupidstick.cli;
 
 import com.beust.jcommander.JCommander;
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.stupidstick.filter.DataFilter;
 import org.stupidstick.filter.FileWritingMode;
 import org.stupidstick.statistic.StatisticMode;
+import org.stupidstick.statistic.collectors.DataStatisticCollector;
 
+@Slf4j
 public class FilterRunnerByArgs {
     private final FilterArgs args = new FilterArgs();
     public FilterRunnerByArgs(String[] args) {
@@ -17,7 +21,16 @@ public class FilterRunnerByArgs {
                 .writingPath(args.getWritingPaths())
                 .writingMode(parseWritingMode())
                 .build();
+        log.info("Starting filter");
         filter.filter(parseInputPaths());
+        log.info("Filtration completed");
+        printStatistic(filter.getStatisticCollector());
+    }
+
+    private void printStatistic(DataStatisticCollector dataCollector) {
+        dataCollector.getCollectors()
+                .forEach((type, collector) ->
+                        System.out.println(type.getName() + "s statistics: " + collector.statistic()));
     }
 
     private String[] parseInputPaths() {

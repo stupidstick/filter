@@ -17,8 +17,8 @@ public class NumberFullStatisticCollector<T extends Number & Comparable<T>> exte
     @Override
     public String statistic() {
         StringBuilder builder = new StringBuilder(super.statistic());
-        if (getMinVal() != null) builder.append("Min: ").append(getMinVal()).append("; ");
-        if (getMaxVal() != null) builder.append("Max: ").append(maxVal).append("; ");
+        if (getMinVal() != null) builder.append("Min: ").append(getMinVal()).append("\n");
+        if (getMaxVal() != null) builder.append("Max: ").append(maxVal).append("\n");
         return builder.toString();
     }
 }

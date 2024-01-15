@@ -2,39 +2,49 @@ package org.stupidstick.filter;
 
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.stupidstick.DataConverter;
 import org.stupidstick.DataType;
-import org.stupidstick.configuration.OutputConfiguration;
 import org.stupidstick.Pair;
+import org.stupidstick.configuration.OutputConfiguration;
 import org.stupidstick.statistic.StatisticMode;
 import org.stupidstick.statistic.collectors.DataStatisticCollector;
 import org.stupidstick.writer.DataWriter;
-import org.stupidstick.writer.FileDataWriter;
+import org.stupidstick.writer.DataWritersManager;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.EnumMap;
 
+@Slf4j
 public class DataFilter {
-    private final EnumMap<DataType, DataWriter> writers = new EnumMap<>(DataType.class);
     @Getter
     private final DataStatisticCollector statisticCollector;
+    @Getter @Setter
+    private String outputPrefix;
+    @Getter @Setter
+    private String writingPath;
+    @Getter @Setter
+    private FileWritingMode writingMode;
+    private DataWritersManager writersManager;
 
 
     private DataFilter(String outputPrefix, String writingPath, FileWritingMode writingMode, StatisticMode statisticMode) {
+        this.outputPrefix = outputPrefix;
+        this.writingPath = writingPath;
+        this.writingMode = writingMode;
         FilterUtils.createDirectories(writingPath);
-        OutputConfiguration.getOutputFilenames()
-                .forEach((type, fileName) -> writers.put(type,
-                        new FileDataWriter(FilterUtils.buildPath(writingPath, outputPrefix + fileName), writingMode)));
         statisticCollector = DataStatisticCollector.valueOf(statisticMode);
     }
 
 
     public void filter(String @NonNull ... readingFilePaths) {
+        writersManager = new DataWritersManager(writingPath, outputPrefix, writingMode);
         for (String path : readingFilePaths) {
             filterFile(path);
         }
+        writersManager.close();
     }
 
     private void filterFile(String path) {
@@ -46,15 +56,8 @@ public class DataFilter {
                 statisticCollector.add(convertedData);
             }
         } catch (IOException exception) {
-            exception.printStackTrace();
+            log.error("Access to file {} is broken. The file will be skipped. " + exception.getMessage(), path);
         }
-        writers.values().forEach(writer -> {
-            try {
-                writer.close();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
     }
 
 

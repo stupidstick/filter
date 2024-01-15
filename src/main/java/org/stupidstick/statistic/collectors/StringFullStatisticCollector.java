@@ -17,8 +17,8 @@ public class StringFullStatisticCollector extends StatisticCollector<String> {
     @Override
     public String statistic() {
         StringBuilder statisticBuilder = new StringBuilder(super.statistic());
-        if (minLength != null) statisticBuilder.append("Min length: ").append(minLength).append("; ");
-        if (maxLength != null) statisticBuilder.append("Max length: ").append(maxLength).append("; ");
+        if (minLength != null) statisticBuilder.append("Min length: ").append(minLength).append("\n");
+        if (maxLength != null) statisticBuilder.append("Max length: ").append(maxLength).append("\n");
         return statisticBuilder.toString();
     }
 }
