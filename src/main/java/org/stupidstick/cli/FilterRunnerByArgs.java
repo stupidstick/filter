@@ -23,13 +23,15 @@ public class FilterRunnerByArgs {
         log.info("Starting filter");
         filter.filter(parseInputPaths());
         log.info("Filtration completed");
-        printStatistic(filter.getStatisticCollector());
+        log.info(formatStatistics(filter.getStatisticCollector()));
     }
 
-    private void printStatistic(DataStatisticCollector dataCollector) {
+    private String formatStatistics(DataStatisticCollector dataCollector) {
+        StringBuilder builder = new StringBuilder("Statistics:\n");
         dataCollector.getCollectors()
                 .forEach((type, collector) ->
-                        System.out.println(type.getName() + "s statistics: " + collector.statistic()));
+                        builder.append(type.getName()).append("s:\n").append(collector.statistic()));
+        return builder.toString();
     }
 
     private String[] parseInputPaths() {

@@ -9,6 +9,7 @@ import org.stupidstick.filter.FilterUtils;
 
 import java.io.IOException;
 import java.util.EnumMap;
+import java.util.Objects;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -28,7 +29,7 @@ public class DataWritersManager {
         try {
             writer.writeLine(data);
         } catch (IOException exception) {
-            writers.put(type, null);
+            writers.remove(type);
             log.error("Error writing to file {}. Writing to this file is suspended. " + exception.getMessage(), writer.getFilePath());
         }
 
