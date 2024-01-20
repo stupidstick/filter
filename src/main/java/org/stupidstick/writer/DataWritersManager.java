@@ -9,7 +9,6 @@ import org.stupidstick.filter.FilterUtils;
 
 import java.io.IOException;
 import java.util.EnumMap;
-import java.util.Objects;
 
 @RequiredArgsConstructor
 @Slf4j
