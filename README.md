@@ -8,7 +8,7 @@
 <i><b>Logback Classic Module</b> (Version 1.4.14)</i> Link: https://mvnrepository.com/artifact/ch.qos.logback/logback-classic/1.4.14 <br>
 
 <h2>Запуск приложения</h2>
-Для запуска используйте filter.jar из корнеыой папки приложения <br>
+Для запуска используйте filter.jar из корневой папки приложения <br>
 <b>Пример запуска:</b> <br>
 <i>java -jar -f filter.jar -p out_ -o result_ in1.txt in2.txt -a</i>
 <br>
