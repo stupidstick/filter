@@ -3,9 +3,9 @@
 <b>Система сборки:</b> Maven (Version 3.9.2) <br>
 <h3>Используемые библиотеки:</h3>
 <i><b>Project Lombok</b> (Version 1.18.30)</i> Link: https://mvnrepository.com/artifact/org.projectlombok/lombok/1.18.30 <br>
-<b>JCommander</b> (Version 1.82) Link: https://mvnrepository.com/artifact/com.beust/jcommander/1.82 <br>
-<b>SLF4J API Module</b> (Version 2.0.11) Link: https://mvnrepository.com/artifact/org.slf4j/slf4j-api/2.0.11 <br>
-<b>Logback Classic Module</b> (Version 1.4.14) Link: https://mvnrepository.com/artifact/ch.qos.logback/logback-classic/1.4.14 <br>
+<i><b>JCommander</b> (Version 1.82)</i> Link: https://mvnrepository.com/artifact/com.beust/jcommander/1.82 <br>
+<i><b>SLF4J API Module</b> (Version 2.0.11)</i> Link: https://mvnrepository.com/artifact/org.slf4j/slf4j-api/2.0.11 <br>
+<i><b>Logback Classic Module</b> (Version 1.4.14)</i> Link: https://mvnrepository.com/artifact/ch.qos.logback/logback-classic/1.4.14 <br>
 
 <h2>Запуск приложения</h2>
 Для запуска используйте filter.jar из корнеыой папки приложения <br>
