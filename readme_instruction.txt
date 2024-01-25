@@ -9,7 +9,7 @@ Logback Classic Module (Version 1.4.14) Link: https://mvnrepository.com/artifact
 
 Для запуска используйте filter.jar из корнеыой папки приложения
 Пример запуска:
-java -jar -f filter.jar -p out_ -o result_ in1.txt in2.txt -a
+java -jar filter.jar -f -p out_ -o result_ in1.txt in2.txt -a
 
 -f, -s - флаги выбора режима статистики. Обязательно должен быть использован один из флагов. Одновременно два флага не могут быть использованы.
 -o - задать путь для записи результатов (Несуществующие папки будут созданы)
